@@ -25,11 +25,11 @@ Here is an explanation of the repository file structure:
 
 ### Requirements
 
-- `Environment`: A Linux environment is recommended (e.g., 'Ubuntu').
+- `Environment`: A Linux environment is recommended (e.g., `Ubuntu`).
 - `Mininet`: Recommended Version 2.3.0
 - `Ryu`: Version 4.34 (or any 4.x version).
 - `OpenFlow`: The controllers use OpenFlow 1.3.
-- `Python` Libraries: All Python code is written for Python 3.8+.
+- `Python Libraries`: All Python code is written for Python 3.8+.
 ``` bash
 pip install ryu pandas networkx matplotlib scikit-learn tensorflow flask requests
 ```
@@ -37,45 +37,46 @@ pip install ryu pandas networkx matplotlib scikit-learn tensorflow flask request
 ### Important Setup
 
 File Location: All .py scripts and .csv files must be in the same root directory. 
+
 Permissions: You will need sudo access to run Mininet.
 
 ### Project Workflow
 
-Phase 1: This phase runs your decoupled 4-terminal system to generate your energy-saving metrics and the "Sleep Plan" for Phase 2.
+- Phase 1: This phase runs your decoupled 4-terminal system to generate your energy-saving metrics and the "Sleep Plan" for Phase 2.
 
 In terminal 1, start the SDN RYU controller:
-'''
+``` bash
 ryu-manager ryu_controller.py
-'''
+```
 
 In terminal 2, start by creating the topology on mininet:
-'''
+``` bash
 sudo python3 topology.py
-'''
+```
 
 In terminal 3 start the ml_predictor_service file so as to receive the next hour ML predictions:
-'''
+``` bash
 sudo python3 ml_predictor_service.py
-'''
+```
 
 Finally, in terminal 4 start the energy_manager:
-'''
+``` bash
 sudo python3 energy_manager.py
-'''
+```
 
 At the end of this phase, you have your Energy Saved metrics from energy_metrics.csv and your 24-hour "Sleep Plan" from the logs. We can calculate the predicted energy utilization and % energy saved using this data.
 
-Phase 2: Now we emulate the decisions from Phase 1 to measure their real-world impact on throughput and latency.
+- Phase 2: Now we emulate the decisions from Phase 1 to measure their real-world impact on throughput and latency.
 
 In terminal 1, start by running the SDN RYU controller:
-'''
+``` bash
 ryu-manager ryu.py
-'''
+```
 
 In terminal 2, start the traffic simulation by running the run_simulation file, which creates a Mininet topology and calculates metrics like end-to-end throughput and average system latency:
-'''
+``` bash
 sudo python3 run_simulation.py
-'''
+```
 
 Stop both processes (Ctrl+C) and run sudo mn -c.
 
