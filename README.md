@@ -7,42 +7,32 @@ The evolution of fifth-generation (5G) networks has substantially increased traf
 ## File Structure
 
 Here is an explanation of the repository file structure:
-'''
-├── Data CSVs --> Contain all the CSV data related to ML Model Training, Predictions etc
-│
-├── Images --> Contains all the final results + output images including topology visualizations
-│
-├── Simulation Files --> Contains files to test and validate the traffic data in a mininet-emulated environment
-│
-├── checkpoints --> Contains the trained LSTM model
-│
-├── energy_manager.py --> 
-│
-├── lstm.ipynb --> The Jupyter Notebook used to design, train, and validate the LSTM model.
-│
-├── ml_predictor_service.py --> Intermediates the service of sending the next hour ML model predictions to 'energy_manager.py'
-│
-├── ryu_controller.py --> SDN Controller for the mininet-emulated topology
-│
-├── synthetic_train_data_generator.py --> Generates synthetic 5G traffic data to train our LSTM Model
-│
-├── topology.py --> Creates a close-to-real-life 5G backhaul structure in Mininet
-│
-└── visualize_topo.py --> Code to generate topology visualization images.
-'''
+```
+├── Data CSVs/                    # CSV data for ML Model Training, Predictions etc
+├── Images/                       # Final results + topology visualizations
+├── Simulation Files/             # Files to emulate and test traffic data in Mininet
+├── checkpoints/                  # Trained LSTM model
+├── energy_manager.py             # Main energy management logic
+├── lstm.ipynb                    # Jupyter Notebook for LSTM model design/training
+├── ml_predictor_service.py       # Sends ML predictions to energy_manager.py
+├── ryu_controller.py             # SDN Controller for Mininet topology
+├── synthetic_train_data_generator.py  # Generates synthetic 5G traffic data
+├── topology.py                   # Creates realistic 5G backhaul structure using Mininet
+└── visualize_topo.py             # Generates topology visualization images
+```
 
 ## How to Replicate This Project
 
 ### Requirements
 
-- Environment: A Linux environment is recommended (e.g., 'Ubuntu').
-- 'Mininet': Recommended Version 2.3.0
-- 'Ryu': Version 4.34 (or any 4.x version).
-- 'OpenFlow': The controllers use OpenFlow 1.3.
-- Python Libraries: All Python code is written for Python 3.8+.
-'''
+- `Environment`: A Linux environment is recommended (e.g., 'Ubuntu').
+- `Mininet`: Recommended Version 2.3.0
+- `Ryu`: Version 4.34 (or any 4.x version).
+- `OpenFlow`: The controllers use OpenFlow 1.3.
+- `Python` Libraries: All Python code is written for Python 3.8+.
+``` bash
 pip install ryu pandas networkx matplotlib scikit-learn tensorflow flask requests
-'''
+```
 
 ### Important Setup
 
